@@ -20,4 +20,10 @@ instance/
 
 # OS files
 .DS_Store
-Thumbs.db
+Thumbs.dbss
+
+# Ignore uploaded input files
+uploads/
+
+# Ignore generated output videos
+outputs/
