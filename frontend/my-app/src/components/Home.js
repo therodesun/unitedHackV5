@@ -16,7 +16,8 @@ function Home() {
       alert(`Uploading: ${file.name}`);
       // upload the pdf or jpeg file to the flask backend
       const formData = new FormData();
-      formData.append('file', file);  
+      const renamedFile = new File([file], 'img_test.jpg', { type: file.type });
+      formData.append('file', renamedFile);  
 
       fetch('http://127.0.0.1:5000/upload', {
         method: 'POST',
