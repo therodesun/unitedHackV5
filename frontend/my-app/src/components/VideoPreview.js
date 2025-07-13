@@ -4,13 +4,17 @@ import React, { useEffect, useState } from 'react';
 
 const VideoPreview = () => {
   const [videoUrl, setVideoUrl] = useState(null);
+  const [extractedText, setExtractedText] = useState(null);
 
   useEffect(() => {
-    fetch('http://127.0.0.1:5000/video')
+    fetch('http://127.0.0.1:5000/translate')
       .then((response) => response.json())
       .then((data) => {
         if (data.video_file) {
           setVideoUrl(`http://127.0.0.1:5000/static/outputs/${data.video_file}`);
+        }
+        if (data.text) {
+          setExtractedText(data.text);
         }
       })
       .catch((error) => console.error('Error fetching video:', error));
@@ -27,6 +31,9 @@ const VideoPreview = () => {
           </video>
         ) : (
           <p className="text-[#7a736f]">Loading video...</p>
+        )}
+        {extractedText && (
+          <p className="text-[#7a736f] mt-2 italic">{extractedText}</p>
         )}
       </div>
     </div>
