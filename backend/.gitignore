@@ -23,7 +23,7 @@ instance/
 Thumbs.dbss
 
 # Ignore uploaded input files
-uploads/
+uploads/*
 
 # Ignore generated output videos
-outputs/
+outputs/*
